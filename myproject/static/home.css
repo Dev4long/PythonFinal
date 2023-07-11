@@ -1,0 +1,26 @@
+body{
+    /* background: linear-gradient(#5e004d, #000000); */
+    background:black;
+    color: white;
+}
+
+.mainContainer{
+    background: linear-gradient(#5e004d, #8f0000);
+    height: 500px;
+    width: 500px;
+    border-radius: 10%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}

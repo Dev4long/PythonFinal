@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comment Container</title>
+    <style>
+        .comment-container {
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .comment-header {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .comment-content {
+            margin-bottom: 10px;
+        }
+        .comment-footer {
+            font-style: italic;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <p style="color: red; font-weight: bold;">{{ message }}</p>
+    <div class="comment-container">
+        <div class="comment-header">John Doe</div>
+        <div class="comment-content">This is a great post! I really enjoyed reading it.</div>
+        <div class="comment-footer">Posted on July 11, 2023</div>
+    </div>
+    <button>
+        <a style="color: red; font-weight: bold" href="{% url 'home' %}">Create a post</a>
+    </button>
+</body>
+</html>

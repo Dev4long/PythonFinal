@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'myproject'
 ]
 
 MIDDLEWARE = [
@@ -68,7 +69,8 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 cnx = mysql.connector.connect(
     host="127.0.0.1",
     user="root",
-    password="Deniblanco69!"
+    password="Deniblanco69!",
+    database="finalBlog"
 )
 
 # Create a cursor to execute SQL queries
@@ -78,8 +80,32 @@ cursor = cnx.cursor()
 def create_database():
     cursor.execute("CREATE DATABASE IF NOT EXISTS finalBlog")
 
-# Call the create_database function
+def create_table():
+    query = "CREATE TABLE IF NOT EXISTS Posts (id INT PRIMARY KEY AUTO_INCREMENT, title VARCHAR(255), content VARCHAR(255))"
+    cursor.execute(query)
+
+def drop_database():
+    cursor.execute("DROP DATABASE IF EXISTS finalBlog")
+
+def show_databases():
+    cursor.execute("SHOW DATABASES")
+    databases = cursor.fetchall()
+    for db in databases:
+        print(db[0])
+
+def show_records():
+    query = "SELECT * FROM Posts"
+    cursor.execute(query)
+    records = cursor.fetchall()
+    for record in records:
+        print(record)
+
+# Call the database functions
 create_database()
+show_databases()
+create_table()
+show_records()
+
 
 # Close the cursor and connection
 cursor.close()
