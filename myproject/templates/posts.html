@@ -3,16 +3,22 @@
 <head>
     <title>Comment Container</title>
     <style>
+        body{
+            background: black;
+            text-align: center;
+        }
         .comment-container {
-            background-color: #f1f1f1;
-            border: 1px solid #ddd;
+            background: linear-gradient(#5e004d, #8f0000);
+            border: 2px solid #ffffff;
             border-radius: 5px;
             padding: 10px;
             margin-bottom: 10px;
+            color: white;
         }
         .comment-header {
             font-weight: bold;
             margin-bottom: 5px;
+            font-size: 20px;
         }
         .comment-content {
             margin-bottom: 10px;
@@ -21,17 +27,39 @@
             font-style: italic;
             color: #888;
         }
+        .post-image {
+            max-width: 300px;
+            margin-bottom: 10px;
+        }
+        a {
+            color: rgb(255, 255, 255); 
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .creatPost {
+            align-content: center;
+            background: black;
+            border: 1px solid #ffffff;
+        }
+        .creatPost:hover {
+            background: rgb(255, 0, 0);
+        }
     </style>
 </head>
 <body>
-    <p style="color: red; font-weight: bold;">{{ message }}</p>
+    <p style="color: rgb(255, 255, 255); font-weight: bold; text-align: center; font-size: 40px;">{{ success }}</p>
+    {% for post in all_posts %}
     <div class="comment-container">
-        <div class="comment-header">John Doe</div>
-        <div class="comment-content">This is a great post! I really enjoyed reading it.</div>
-        <div class="comment-footer">Posted on July 11, 2023</div>
+        <div class="comment-header">{{post.title}}</div>
+        <div class="comment-content">{{post.content}}</div>
+        {% if post.picture_url %}
+        <img class="post-image" src="{{ post.picture_url }}" alt="Post Image">
+        {% endif %}
+        <div style="color: rgb(255, 255, 255); font-weight: bold" class="comment-footer">{{post.created_at}}</div>
     </div>
-    <button>
-        <a style="color: red; font-weight: bold" href="{% url 'home' %}">Create a post</a>
+    {% endfor %}
+    <button class="creatPost">
+        <a href="{% url 'home' %}">Create a post</a>
     </button>
 </body>
 </html>

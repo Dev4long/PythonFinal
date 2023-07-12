@@ -5,6 +5,8 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = Path(BASE_DIR,'templates')
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Quick-start development settings - unsuitable for production
@@ -81,11 +83,14 @@ def create_database():
     cursor.execute("CREATE DATABASE IF NOT EXISTS finalBlog")
 
 def create_table():
-    query = "CREATE TABLE IF NOT EXISTS Posts (id INT PRIMARY KEY AUTO_INCREMENT, title VARCHAR(255), content VARCHAR(255))"
+    query = "CREATE TABLE IF NOT EXISTS Posts (id INT PRIMARY KEY AUTO_INCREMENT, title VARCHAR(255), content VARCHAR(255), picture_url VARCHAR(500), created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)"
     cursor.execute(query)
 
 def drop_database():
     cursor.execute("DROP DATABASE IF EXISTS finalBlog")
+
+def drop_table():
+    cursor.execute("DROP TABLE IF EXISTS Posts")
 
 def show_databases():
     cursor.execute("SHOW DATABASES")
@@ -101,10 +106,13 @@ def show_records():
         print(record)
 
 # Call the database functions
+
 create_database()
-show_databases()
 create_table()
+show_databases()
 show_records()
+# drop_table()
+
 
 
 # Close the cursor and connection

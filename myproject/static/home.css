@@ -1,6 +1,5 @@
 body{
-    /* background: linear-gradient(#5e004d, #000000); */
-    background:black;
+    background:rgb(0, 0, 0);
     color: white;
 }
 
@@ -20,7 +19,15 @@ h1{
     text-align: center;
 }
 
-a{
-    color: white;
+a {
+    color: rgb(255, 255, 255); 
+    font-weight: bold;
     text-decoration: none;
+}
+.post {
+    background: black;
+    border: 1px solid #ffffff;
+}
+.post:hover {
+    background: rgb(255, 0, 0);
 }
