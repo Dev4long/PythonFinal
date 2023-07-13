@@ -56,6 +56,10 @@
         <img class="post-image" src="{{ post.picture_url }}" alt="Post Image">
         {% endif %}
         <div style="color: rgb(255, 255, 255); font-weight: bold" class="comment-footer">{{post.created_at}}</div>
+        <form action="{% url 'delete_post' post.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="delete-button">Delete</button>
+        </form>
     </div>
     {% endfor %}
     <button class="creatPost">

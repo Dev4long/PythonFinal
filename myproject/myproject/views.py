@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Posts
+from django.shortcuts import get_object_or_404
 
 
 def posts(request):
@@ -33,5 +34,15 @@ def create_post(request):
 
     return render(request, 'posts.html', context)
 
-    
+def delete_post(request, post_id):
+    post = get_object_or_404(Posts, id=post_id)
+    post.delete()
+
+    all_posts = Posts.objects.all()
+    context = {
+        'all_posts': all_posts,
+        'success': 'Post deleted succesfully'
+    }
+
+    return render(request, 'posts.html', context)
 # Create your views here.
